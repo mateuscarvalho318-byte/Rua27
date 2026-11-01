@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RUA 27 — Streetwear</title>
+<style>
+:root{--bg:#f3f2ee;--card:#fff;--ink:#0c0c0c;--mut:#6b6b66;--line:#dcdad2;--acc:#d9ff1f;--red:#e5321b;--sh:rgba(0,0,0,.45);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0c0c;--card:#181818;--ink:#f3f2ee;--mut:#9a9a93;--line:#2a2a2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c0c0c;--card:#181818;--ink:#f3f2ee;--mut:#9a9a93;--line:#2a2a2a;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;max-width:720px;margin-inline:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border-bottom:2px solid var(--ink)}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.04em;text-transform:uppercase}
+.logo b{background:var(--acc);color:#000;padding:0 5px;margin-left:3px}
+.cartbtn{position:relative;background:var(--ink);color:var(--bg);border:0;padding:9px 14px;font-weight:800;text-transform:uppercase;font-size:13px}
+.cartbtn i{position:absolute;top:-7px;right:-7px;background:var(--red);color:#fff;font-style:normal;font-size:11px;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center}
+.hero{margin:14px 16px;padding:22px 18px;background:#0c0c0c;color:#f3f2ee;position:relative;overflow:hidden;min-height:190px;display:flex;flex-direction:column;justify-content:flex-end}
+.hero:before{content:"27";position:absolute;right:-8px;top:-30px;font-size:170px;font-weight:900;color:#d9ff1f;opacity:.9;letter-spacing:-.08em}
+.tag{align-self:flex-start;background:var(--acc);color:#000;font-weight:900;font-size:12px;padding:3px 8px;text-transform:uppercase;position:relative}
+.hero h1{margin:8px 0 4px;font-size:34px;line-height:.95;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;position:relative}
+.hero p{margin:0 0 12px;color:#bbb;position:relative}
+.cta{align-self:flex-start;background:var(--acc);color:#000;border:0;padding:11px 18px;font-weight:900;text-transform:uppercase;position:relative}
+.strip{background:var(--acc);color:#000;font-weight:800;font-size:12px;text-transform:uppercase;padding:7px 16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.filters{padding:14px 16px 4px}
+.row{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.lbl{font-size:11px;font-weight:800;text-transform:uppercase;color:var(--mut);margin:4px 0 6px}
+.chip{flex:none;border:1.5px solid var(--ink);background:transparent;padding:7px 13px;font-weight:700;font-size:13px;text-transform:uppercase}
+.chip.on{background:var(--ink);color:var(--bg)}
+.count{padding:4px 16px 10px;color:var(--mut);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 24px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1.5px solid var(--line);text-align:left;padding:0;display:block;width:100%;overflow:hidden}
+.art{aspect-ratio:1;background:linear-gradient(145deg,#e7e5dc,#cfcdc2);position:relative;display:grid;place-items:center}
+.art svg{width:86%;height:86%}
+.off{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-weight:900;font-size:11px;padding:3px 6px}
+.info{padding:10px}
+.nm{font-weight:700;font-size:14px;margin:0 0 2px}
+.ct{color:var(--mut);font-size:11px;text-transform:uppercase;font-weight:700}
+.pr{margin-top:6px;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.pr b{font-size:16px}.pr s{color:var(--mut);font-size:12px}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:40px 0}
+footer{padding:20px 16px 40px;border-top:2px solid var(--ink);color:var(--mut);font-size:12px}
+.ov{position:fixed;inset:0;background:var(--sh);z-index:20;display:none;align-items:flex-end;justify-content:center}
+.ov.show{display:flex}
+.sheet{background:var(--bg);width:100%;max-width:720px;max-height:92%;overflow-y:auto;border-top:3px solid var(--acc);padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.sh-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sh-h h2{margin:0;font-size:18px;text-transform:uppercase;font-weight:900}
+.x{background:none;border:1.5px solid var(--ink);width:34px;height:34px;font-size:18px;line-height:1}
+.sheet .art{margin-bottom:12px}
+.big{font-size:24px;font-weight:900}
+.desc{color:var(--mut);margin:8px 0 12px}
+.sizes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.sz{min-width:46px;padding:10px 8px;border:1.5px solid var(--ink);background:transparent;font-weight:800}
+.sz.on{background:var(--ink);color:var(--bg)}
+.btn{width:100%;border:0;background:var(--acc);color:#000;padding:15px;font-weight:900;text-transform:uppercase;font-size:15px}
+.btn.dark{background:var(--ink);color:var(--bg)}
+.ci{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ci .art{width:72px;flex:none;margin:0}
+.ci .art svg{width:90%;height:90%}
+.ci .mid{flex:1;min-width:0}
+.q{display:flex;align-items:center;gap:8px;margin-top:6px}
+.q button{width:30px;height:30px;border:1.5px solid var(--ink);background:transparent;font-weight:900}
+.rm{background:none;border:0;color:var(--red);font-size:12px;font-weight:700;margin-left:auto}
+.tot{display:flex;justify-content:space-between;font-size:18px;font-weight:900;padding:14px 0 10px}
+.note{background:var(--card);border:1.5px dashed var(--mut);padding:10px;font-size:12px;color:var(--mut);margin-top:10px}
+.toast{position:fixed;left:16px;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:12px 14px;font-weight:700;z-index:30;display:none;max-width:688px;margin-inline:auto}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Rua<b>27</b></div>
+  <button class="cartbtn" onclick="openCart()" aria-label="Abrir carrinho">Carrinho<i id="cnt">0</i></button>
+</header>
+
+<section class="hero">
+  <span class="tag">Drop de verão</span>
+  <h1>Até 30% off<br>na rua toda</h1>
+  <p>Camisetas, tênis e acessórios selecionados.</p>
+  <button class="cta" onclick="document.getElementById('cat').scrollIntoView({behavior:'smooth'})">Ver coleção</button>
+</section>
+<div class="strip">Frete grátis acima de R$ 299 · Troca em 30 dias</div>
+
+<section class="filters" id="cat">
+  <div class="lbl">Categoria</div><div class="row" id="fCat"></div>
+  <div class="lbl">Tamanho</div><div class="row" id="fSize"></div>
+  <div class="lbl">Preço</div><div class="row" id="fPrice"></div>
+</section>
+<div class="count" id="count"></div>
+<main class="grid" id="grid"></main>
+<footer>RUA 27 · Versão 1 (demonstração visual). Produtos e fotos ilustrativos. Pagamento ainda não integrado.</footer>
+
+<div class="ov" id="ov" onclick="if(event.target===this)closeSheet()"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== CONFIGURAÇÃO (nenhuma chave secreta aqui) =====
+   Etapas futuras: API_URL aponta para o back-end (Supabase/Cloudflare)
+   que fará o checkout com o Mercado Pago. Chaves secretas ficam só no servidor. */
+const CONFIG = { API_URL: null, MOEDA: "BRL" };
+
+/* ===== PRODUTOS (na etapa do banco de dados, virão de CONFIG.API_URL + "/produtos") ===== */
+const ROUPA=["P","M","G","GG"], TENIS=["38","39","40","41","42","43"], UNI=["Único"];
+const PRODUCTS=[
+ {id:1,nome:"Camiseta Oversized Preta",cat:"Roupas",tipo:"tee",cor:"#161616",preco:129.9,promo:89.9,tam:ROUPA,desc:"Algodão 100%, corte oversized e estampa 27 nas costas."},
+ {id:2,nome:"Moletom Canguru Cinza",cat:"Roupas",tipo:"hoodie",cor:"#8a8d91",preco:259.9,promo:null,tam:ROUPA,desc:"Moletom felpudo com capuz e bolso canguru."},
+ {id:3,nome:"Calça Cargo Verde",cat:"Roupas",tipo:"pants",cor:"#5b6b3a",preco:219.9,promo:179.9,tam:ROUPA,desc:"Sarja resistente com bolsos laterais."},
+ {id:4,nome:"Camiseta Boxy Off-White",cat:"Roupas",tipo:"tee",cor:"#eeeadc",preco:109.9,promo:null,tam:ROUPA,desc:"Modelagem boxy, toque macio."},
+ {id:5,nome:"Tênis Street Runner",cat:"Tênis",tipo:"shoe",cor:"#e5321b",preco:429.9,promo:349.9,tam:TENIS,desc:"Solado alto e amortecimento para o dia todo."},
+ {id:6,nome:"Tênis Low Classic Branco",cat:"Tênis",tipo:"shoe",cor:"#f4f4f1",preco:339.9,promo:null,tam:TENIS,desc:"Cano baixo, visual limpo, combina com tudo."},
+ {id:7,nome:"Tênis High Preto",cat:"Tênis",tipo:"shoe",cor:"#1b1b1b",preco:389.9,promo:329.9,tam:TENIS,desc:"Cano médio com acabamento premium."},
+ {id:8,nome:"Boné Dad Hat Lima",cat:"Acessórios",tipo:"cap",cor:"#b6d900",preco:79.9,promo:59.9,tam:UNI,desc:"Aba curva e ajuste traseiro."},
+ {id:9,nome:"Bolsa Transversal Tática",cat:"Acessórios",tipo:"bag",cor:"#2a2a2a",preco:149.9,promo:null,tam:UNI,desc:"Compacta, com 3 compartimentos e alça ajustável."},
+ {id:10,nome:"Moletom Zip Azul",cat:"Roupas",tipo:"hoodie",cor:"#2f5dd0",preco:289.9,promo:239.9,tam:ROUPA,desc:"Zíper inteiro e forro macio."}
+];
+
+/* ===== ILUSTRAÇÕES (SVG interno, sem imagens externas) ===== */
+function art(t,c){
+ const s='stroke="#000" stroke-opacity=".25" stroke-width="2" stroke-linejoin="round"';
+ const sh={
+ tee:`<path d="M62 38L86 28Q100 44 114 28L138 38L170 74L148 92L140 82V168H60V82L52 92L30 74Z" fill="${c}" ${s}/><text x="100" y="118" text-anchor="middle" font-size="26" font-weight="900" fill="#d9ff1f" stroke="#000" stroke-width=".6" font-family="Arial">27</text>`,
+ hoodie:`<path d="M60 44L84 30Q100 52 116 30L140 44L172 84L148 104L140 92V170H60V92L52 104L28 84Z" fill="${c}" ${s}/><path d="M84 30Q100 70 116 30" fill="none" ${s}/><path d="M72 128H128L122 156H78Z" fill="#000" fill-opacity=".14"/>`,
+ pants:`<path d="M66 28H134L146 176H108L100 82L92 176H54Z" fill="${c}" ${s}/><rect x="112" y="100" width="22" height="26" fill="#000" fill-opacity=".15"/><rect x="66" y="100" width="22" height="26" fill="#000" fill-opacity=".15"/>`,
+ shoe:`<path d="M22 126Q28 84 62 90L84 106Q104 92 122 102L170 118Q186 124 184 142H22Z" fill="${c}" ${s}/><rect x="20" y="138" width="166" height="16" rx="8" fill="#f5f5f2" ${s}/><path d="M86 106L98 120M100 100L112 114" stroke="#000" stroke-opacity=".35" stroke-width="3"/>`,
+ cap:`<path d="M44 124Q44 54 104 54Q154 54 158 124Z" fill="${c}" ${s}/><path d="M120 120Q176 112 188 134Q150 140 120 130Z" fill="${c}" ${s}/><circle cx="104" cy="56" r="5" fill="#000" fill-opacity=".3"/>`,
+ bag:`<path d="M30 60Q100 -10 170 60" fill="none" stroke="#000" stroke-opacity=".5" stroke-width="7"/><rect x="48" y="80" width="104" height="76" rx="14" fill="${c}" ${s}/><rect x="60" y="98" width="80" height="22" rx="6" fill="#000" fill-opacity=".2"/><rect x="92" y="94" width="16" height="12" fill="#d9ff1f"/>`
+ };
+ return `<svg viewBox="0 0 200 200" role="img" aria-label="Ilustração do produto">${sh[t]}</svg>`;
+}
+
+/* ===== UTILIDADES ===== */
+const brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:CONFIG.MOEDA});
+const final=p=>p.promo??p.preco;
+const $=id=>document.getElementById(id);
+const faixas=[["Todos",0,1e9],["Até R$ 150",0,150],["R$ 150–300",150,300],["Acima de R$ 300",300,1e9]];
+let F={cat:"Todos",tam:"Todos",faixa:0};
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem("rua27_cart")||"[]")}catch(e){cart=[]}
+function save(){try{localStorage.setItem("rua27_cart",JSON.stringify(cart))}catch(e){}}
+function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display="none",3200)}
+
+/* ===== FILTROS E CATÁLOGO ===== */
+function chips(el,list,cur,fn){$(el).innerHTML=list.map(([v,l])=>`<button class="chip ${cur===v?"on":""}" onclick="${fn}(${typeof v==="number"?v:`'${v}'`})">${l}</button>`).join("")}
+function render(){
+ const cats=["Todos","Roupas","Tênis","Acessórios"];
+ const tams=["Todos",...new Set(PRODUCTS.flatMap(p=>p.tam).filter(x=>x!=="Único"))];
+ chips("fCat",cats.map(c=>[c,c]),F.cat,"setCat");
+ chips("fSize",tams.map(c=>[c,c]),F.tam,"setTam");
+ chips("fPrice",faixas.map((f,i)=>[i,f[0]]),F.faixa,"setFaixa");
+ const [,min,max]=faixas[F.faixa];
+ const list=PRODUCTS.filter(p=>(F.cat==="Todos"||p.cat===F.cat)&&(F.tam==="Todos"||p.tam.includes(F.tam))&&final(p)>=min&&final(p)<=max);
+ $("count").textContent=list.length+(list.length===1?" produto":" produtos");
+ $("grid").innerHTML=list.length?list.map(p=>`<button class="card" onclick="openProd(${p.id})"><div class="art">${p.promo?`<span class="off">-${Math.round((1-p.promo/p.preco)*100)}%</span>`:""}${art(p.tipo,p.cor)}</div><div class="info"><div class="ct">${p.cat}</div><p class="nm">${p.nome}</p><div class="pr"><b>${brl(final(p))}</b>${p.promo?`<s>${brl(p.preco)}</s>`:""}</div></div></button>`).join(""):`<div class="empty">Nenhum produto com esses filtros.</div>`;
+}
+const setCat=v=>{F.cat=v;render()}, setTam=v=>{F.tam=v;render()}, setFaixa=v=>{F.faixa=v;render()};
+
+/* ===== FOLHAS (detalhe e carrinho) ===== */
+function showSheet(html){$("sheet").innerHTML=html;$("ov").classList.add("show");$("sheet").scrollTop=0;document.body.style.overflow="hidden"}
+function closeSheet(){$("ov").classList.remove("show");document.body.style.overflow=""}
+let sel=null;
+function openProd(id){
+ const p=PRODUCTS.find(x=>x.id===id);sel={id,tam:p.tam.length===1?p.tam[0]:null};
+ showSheet(`<div class="sh-h"><span class="ct">${p.cat}</span><button class="x" onclick="closeSheet()" aria-label="Fechar">×</button></div>
+ <div class="art">${p.promo?`<span class="off">-${Math.round((1-p.promo/p.preco)*100)}%</span>`:""}${art(p.tipo,p.cor)}</div>
+ <h2 style="margin:0;font-size:20px">${p.nome}</h2>
+ <div class="pr"><span class="big">${brl(final(p))}</span>${p.promo?`<s>${brl(p.preco)}</s>`:""}</div>
+ <div class="ct" style="margin-top:4px">ou 3x de ${brl(final(p)/3)} sem juros (exemplo)</div>
+ <p class="desc">${p.desc}</p>
+ <div class="lbl">Tamanho</div>
+ <div class="sizes">${p.tam.map(t=>`<button class="sz ${sel.tam===t?"on":""}" onclick="pickSize('${t}')">${t}</button>`).join("")}</div>
+ <button class="btn" onclick="addCart()">Adicionar ao carrinho</button>`);
+}
+function pickSize(t){sel.tam=t;document.querySelectorAll(".sz").forEach(b=>b.classList.toggle("on",b.textContent===t))}
+
+/* ===== CARRINHO ===== */
+function addCart(){
+ if(!sel.tam){toast("Escolha um tamanho primeiro.");return}
+ const it=cart.find(i=>i.id===sel.id&&i.tam===sel.tam);
+ it?it.q++:cart.push({id:sel.id,tam:sel.tam,q:1});
+ save();badge();toast("Adicionado ao carrinho ✓");openCart();
+}
+function badge(){$("cnt").textContent=cart.reduce((a,i)=>a+i.q,0)}
+function chg(k,d){const i=cart[k];i.q+=d;if(i.q<=0)cart.splice(k,1);save();badge();openCart()}
+function rm(k){cart.splice(k,1);save();badge();openCart()}
+function openCart(){
+ let total=0;
+ const rows=cart.map((i,k)=>{const p=PRODUCTS.find(x=>x.id===i.id);total+=final(p)*i.q;
+  return `<div class="ci"><div class="art">${art(p.tipo,p.cor)}</div><div class="mid"><p class="nm">${p.nome}</p><div class="ct">Tam ${i.tam}</div><b>${brl(final(p))}</b>
+  <div class="q"><button onclick="chg(${k},-1)" aria-label="Diminuir">−</button><span>${i.q}</span><button onclick="chg(${k},1)" aria-label="Aumentar">+</button><button class="rm" style="border:0;width:auto" onclick="rm(${k})">Remover</button></div></div></div>`}).join("");
+ showSheet(`<div class="sh-h"><h2>Seu carrinho</h2><button class="x" onclick="closeSheet()" aria-label="Fechar">×</button></div>`+
+ (cart.length?rows+`<div class="tot"><span>Total</span><span>${brl(total)}</span></div>
+ <button class="btn" onclick="checkout()">Finalizar pedido</button>
+ <div class="note">Pagamento por Pix e cartão (Mercado Pago): <b>ainda não integrado</b>. Será a próxima etapa, feita por um servidor seguro.</div>`
+ :`<div class="empty" style="padding:40px 0;text-align:center;color:var(--mut)">Seu carrinho está vazio.</div><button class="btn dark" onclick="closeSheet()">Continuar comprando</button>`));
+}
+function checkout(){
+ if(!CONFIG.API_URL){toast("Checkout ainda não conectado. Nenhum pagamento foi feito.");return}
+ /* Etapa futura: enviar {itens:[{id,tam,q}]} para CONFIG.API_URL + "/checkout".
+    O servidor recalcula os preços, cria o pedido e devolve o link de pagamento do Mercado Pago. */
+}
+
+badge();render();
+</script>
+</body>
+</html>
